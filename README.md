@@ -20,3 +20,7 @@ The technological backbone of `seed Game` comprises:
 - **Game Engine**: Unity, chosen for its cross-platform compatibility and robust rendering capabilities.  
 - **Backend**: Developed using Go programming language and Gin framework for building efficient and scalable API services, with MongoDB providing flexible data storage.  
 - **Frontend**: Unity's UI system and C# scripting ensure an intuitive and responsive user interface.  
+
+##Branchs
+
+- **Web-Frontend** https://github.com/SeedsofTon/Seed/tree/Web-Frontend
