@@ -62,7 +62,7 @@ function App() {
   useEffect(() => {
     const updateWidthAndHeight = () => {
       setCanvasWidth(window.innerWidth);
-      setCanvasHeight(window.innerHeight - 64);
+      setCanvasHeight(window.innerHeight);
     };
     updateWidthAndHeight();
 
@@ -96,7 +96,7 @@ function App() {
               left: 0,
             }}
           >
-            <p style={{ fontFamily: 'LanaPixel', fontSize: '58px' }}>loading...{Math.round(loadingProgression * 100)}%</p>
+            <p style={{ fontFamily: 'LanaPixel', fontSize: '38px' }}>loading...{Math.round(loadingProgression * 100)}%</p>
           </div>
         ) : null}
         <Unity
