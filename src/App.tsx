@@ -96,7 +96,7 @@ function App() {
               left: 0,
             }}
           >
-            <p style={{ fontFamily: 'LanaPixel' }}>loading...{Math.round(loadingProgression * 100)}%</p>
+            <p style={{ fontFamily: 'LanaPixel', fontSize: '58px' }}>loading...{Math.round(loadingProgression * 100)}%</p>
           </div>
         ) : null}
         <Unity
