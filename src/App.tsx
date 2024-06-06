@@ -74,27 +74,40 @@ function App() {
 
   return (
     <Fragment>
-      {!isLoaded && (
-        <div
-          style={{
-            width: canvasWidth,
-            height: canvasHeight,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <p>loading...{Math.round(loadingProgression * 100)}%</p>
-        </div>
-      )}
-      <Unity
-        unityProvider={unityProvider}
-        devicePixelRatio={devicePixelRatio}
+      <div
         style={{
           width: canvasWidth,
           height: canvasHeight,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
-      />
+      >
+        {!isLoaded ? (
+          <div
+            style={{
+              width: canvasWidth,
+              height: canvasHeight,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+          >
+            <p>loading...{Math.round(loadingProgression * 100)}%</p>
+          </div>
+        ) : null}
+        <Unity
+          unityProvider={unityProvider}
+          devicePixelRatio={devicePixelRatio}
+          style={{
+            width: canvasWidth,
+            height: canvasHeight,
+          }}
+        />
+      </div>
     </Fragment>
   );
 }
