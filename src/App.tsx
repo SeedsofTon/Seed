@@ -15,7 +15,7 @@
 //   return <Unity unityProvider={unityProvider} />;
 // }
 
-import React, { Fragment , useCallback, useEffect, useState} from "react";
+import { Fragment , useEffect, useState} from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 function App() {
