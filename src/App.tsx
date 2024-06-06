@@ -15,15 +15,15 @@
 //   return <Unity unityProvider={unityProvider} />;
 // }
 
-import { Fragment , useEffect, useState} from "react";
-import { Unity, useUnityContext } from "react-unity-webgl";
+import { Fragment, useEffect, useState } from 'react';
+import { Unity, useUnityContext } from 'react-unity-webgl';
 
 function App() {
   const { unityProvider, loadingProgression, isLoaded } = useUnityContext({
-    loaderUrl: "build/StageBuild.loader.js",
-    dataUrl: "build/StageBuild.data.unityweb",
-    frameworkUrl: "build/StageBuild.framework.js.unityweb",
-    codeUrl: "build/StageBuild.wasm.unityweb",
+    loaderUrl: 'build/StageBuild.loader.js',
+    dataUrl: 'build/StageBuild.data.unityweb',
+    frameworkUrl: 'build/StageBuild.framework.js.unityweb',
+    codeUrl: 'build/StageBuild.wasm.unityweb',
   });
 
   const [devicePixelRatio, setDevicePixelRatio] = useState<undefined | number>(undefined);
@@ -75,7 +75,17 @@ function App() {
   return (
     <Fragment>
       {!isLoaded && (
-        <p>loading...{Math.round(loadingProgression * 100)}%</p>
+        <div
+          style={{
+            width: canvasWidth,
+            height: canvasHeight,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <p>loading...{Math.round(loadingProgression * 100)}%</p>
+        </div>
       )}
       <Unity
         unityProvider={unityProvider}
@@ -89,5 +99,4 @@ function App() {
   );
 }
 
-
-export default App
+export default App;
