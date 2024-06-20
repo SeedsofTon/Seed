@@ -8,7 +8,9 @@ https://www.seedsofton.xyz/
 `seed Game` is an exciting project that our team has independently developed. It is an innovative game that blends farming, character progression, social interaction, and competitive elements to craft a captivating virtual world.  
   
 In `seed Game`, players are empowered to cultivate a wide array of plants, develop their unique characters, engage with other players, and participate in diverse gameplay activities.  
-  
+
+- [Deck](https://docs.google.com/presentation/d/160IqKbD3M600EuntXIGBI6H3vqI1TM_sa65nam-JXVs/edit?usp=sharing)
+
 ## Game Features  
   
 - **Farming System**: Nurture and harvest an abundance of plants on your virtual land.  
