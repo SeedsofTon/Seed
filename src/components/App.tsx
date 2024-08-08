@@ -18,7 +18,7 @@ import copy from 'copy-to-clipboard';
 const sharedtext = "Come and play with me, let's be friends and get Airdrop tokens for free!\n\
 💸  10k Coins as a first-time gift\n\
 🔥  50k Coins if you have Telegram Premium"
-const appUrl = "https://t.me/my_dev01_bot/miniapp?startapp="
+const appUrl = "https://t.me/seeds_game_bot/miniapp?startapp="
 const apiUrl = "https://game-api.seedsofton.xyz/"
 const telegramLink = "https://t.me/SeedsofTON"
 const xLink = "https://twitter.com/SeedsofTon"
