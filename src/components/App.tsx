@@ -24,7 +24,6 @@ const telegramLink = "https://t.me/SeedsofTON"
 const xLink = "https://twitter.com/SeedsofTon"
 const youtubeLink = "https://www.youtube.com/@seedsofton"
 
-
 export const App: FC = () => {
 
   const { unityProvider, 
@@ -73,8 +72,7 @@ export const App: FC = () => {
 
   const handleGameIsReady = useCallback(() => {  
     
-    const originalString = lp.startParam ? lp.startParam : "d";  
-    const startParam = originalString.slice(0, -1); 
+    const startParam = lp.startParam ? lp.startParam : "";  
     sendMessage('WebMessage', 'SetStartParam', startParam);
     sendMessage('WebMessage', 'SetInitDataRaw', initDataRaw);
     console.log("" + apiUrl);
@@ -83,12 +81,12 @@ export const App: FC = () => {
 
   const handleShareURL = useCallback((...parameters: any[]) => {  
     
-    utils.shareURL(appUrl + parameters[0] + "d", sharedtext)
+    utils.shareURL(appUrl + parameters[0], sharedtext)
   }, [isLoaded]);
 
   const handleCopyURL = useCallback((...parameters: any[]) => {  
     try {  
-      const text = appUrl + parameters[0] + "d" + "\n" + sharedtext;  
+      const text = appUrl + parameters[0] + "\n" + sharedtext;  
       copy(text);
       console.log('Copy to clipboard');  
     } catch (err) {  
