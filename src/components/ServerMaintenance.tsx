@@ -105,8 +105,8 @@ import {
                   //textShadow: '2px 2px 4px #000000',
                 }}  
               >  
-                The game server is currently under maintenance! 
-                Please wait!
+                The game server is now maintenance 
+                <br />please wait..........^_^
               </p> 
               
               <img src="./buttons/telegram.png"
