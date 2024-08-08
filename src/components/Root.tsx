@@ -3,6 +3,8 @@ import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { type FC, useMemo } from 'react';
 
 import { App } from '@/components/App.tsx';
+//import { ServerMaintenance } from '@/components/ServerMaintenance.tsx';
+
 import { ErrorBoundary } from '@/components/ErrorBoundary.tsx';
 
 const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
