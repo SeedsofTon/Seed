@@ -188,7 +188,7 @@ export const App: FC = () => {
                 //textShadow: '2px 2px 4px #000000',
               }}  
             >  
-              loading...{Math.round(loadingProgression * 100)}%  
+              loading.....{Math.round(loadingProgression * 100)}%  
             </p> 
             
             <img src="./buttons/telegram.png"
