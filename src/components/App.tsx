@@ -15,17 +15,31 @@ import { Unity, useUnityContext } from 'react-unity-webgl';
 import { type FC, useEffect, useCallback, useRef} from 'react';
 import copy from 'copy-to-clipboard';
 
-const sharedtext = "Come and play with me, let's be friends and get Airdrop tokens for free!\n\
+const sharedText = "Come and play with me, let's be friends and get Airdrop tokens for free!\n\
 💸  10k Coins as a first-time gift\n\
 🔥  50k Coins if you have Telegram Premium"
+const socialSeedSharedText = "Come to my homeland and assistance my seeds mature. Together, We will all get air drop tokens!\n\
+💎💎💎 New users will get 1,000,000 coins for first assistance\n\
+💰💰💰 Other users will earn 100,000 coins for each assistance they provide"
+
 const appUrl = "https://t.me/seeds_game_bot/miniapp?startapp="
 const apiUrl = "https://game-api.seedsofton.xyz/"
 const telegramLink = "https://t.me/SeedsofTON"
 const xLink = "https://twitter.com/SeedsofTon"
 const youtubeLink = "https://www.youtube.com/@seedsofton"
 
-export const App: FC = () => {
+function handleCacheControl(url: string) {
+  if (url.match(/\.unityweb/) || url.match(/\.bundle/)) {
+    return "must-revalidate";
+  }
+  if (url.match(/\.mp4/) || url.match(/\.wav/)) {
+    return "immutable";
+  }
+  return "no-store";
+}
 
+export const App: FC = () => {
+  
   const { unityProvider, 
     sendMessage, 
     addEventListener, 
@@ -37,6 +51,7 @@ export const App: FC = () => {
     dataUrl: 'build/StageBuild.data.unityweb',
     frameworkUrl: 'build/StageBuild.framework.js.unityweb',
     codeUrl: 'build/StageBuild.wasm.unityweb',
+    cacheControl: handleCacheControl
   });
 
   const rootDivRef = useRef<HTMLDivElement>(null); 
@@ -81,14 +96,36 @@ export const App: FC = () => {
 
   const handleShareURL = useCallback((...parameters: any[]) => {  
     
-    utils.shareURL(appUrl + parameters[0], sharedtext)
+    const type = parameters[0]
+    switch(type)
+    {
+      case 1:
+        utils.shareURL(appUrl + parameters[1], sharedText);
+        break;
+      case 2:
+        utils.shareURL(appUrl + parameters[1], socialSeedSharedText);
+        break;
+    }
+    
   }, [isLoaded]);
 
   const handleCopyURL = useCallback((...parameters: any[]) => {  
     try {  
-      const text = appUrl + parameters[0] + "\n" + sharedtext;  
+
+      const type = parameters[0]
+      var text = appUrl + parameters[1] + "\n" + sharedText;  
+      switch(type)
+      {
+        case 1:
+          text = appUrl + parameters[1] + "\n" + sharedText;  
+          break;
+        case 2:
+          text = appUrl + parameters[1] + "\n" + socialSeedSharedText;  
+          break;
+      }
+
       copy(text);
-      console.log('Copy to clipboard');  
+      //console.log('Copy to clipboard');  
     } catch (err) {  
       console.error('Copy to clipboard fail:', err);  
     }  
@@ -188,7 +225,7 @@ export const App: FC = () => {
                 //textShadow: '2px 2px 4px #000000',
               }}  
             >  
-              loading.....{Math.round(loadingProgression * 100)}%  
+              loading...{Math.round(loadingProgression * 100)}%  
             </p> 
             
             <img src="./buttons/telegram.png"
@@ -233,8 +270,22 @@ export const App: FC = () => {
                 left: 'calc(50% + 100px)',
                 transform: 'translateX(-50%)',
               }}
-              onClick={handleYoutubeClick}  
+              onClick={handleYoutubeClick}
             />
+
+            <p  
+              style={{  
+                position: 'absolute',  
+                bottom: '5px', // Adjust this value to move the version number up or down  
+                width: '100%',  
+                textAlign: 'center',  
+                fontFamily: 'LanaPixel',  
+                fontSize: '16px',  
+                color: 'white',  
+              }}  
+            >  
+              Version 0.0.5  
+            </p>
           </div>
         ) : null}
         <Unity
