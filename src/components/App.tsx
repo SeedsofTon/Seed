@@ -20,7 +20,7 @@ const sharedText = "Come and play with me, let's be friends and get Airdrop toke
 🔥  50k Coins if you have Telegram Premium"
 const socialSeedSharedText = "Come to my homeland and assistance my seeds mature. Together, We will all get air drop tokens!\n\
 💎💎💎 New users will get 1,000,000 coins for first assistance\n\
-💰💰💰 Other users will earn 100,000 coins for each assistance they provide"
+💰💰💰 Long-term users will earn 100,000 coins for each assistance they provide"
 
 const appUrl = "https://t.me/seeds_game_bot/miniapp?startapp="
 const apiUrl = "https://game-api.seedsofton.xyz/"
@@ -152,6 +152,26 @@ export const App: FC = () => {
     }  
   }, [isLoaded]);
 
+  const handleOpenLink = useCallback((...parameters: any[]) => {  
+    console.log({ parameters });
+    try {  
+      const handle = parameters[0]
+      const url = parameters[1]
+      switch(handle)
+      {
+        case "telegram_link":
+          utils.openTelegramLink(url);
+          break;
+        case "link":
+          utils.openLink(url);
+          break;
+      }
+    } catch (err) {  
+      
+    }  
+  }, [isLoaded]);
+
+
   const handleTelegramClick = () => {  
     utils.openTelegramLink(telegramLink);  
   };  
@@ -169,11 +189,13 @@ export const App: FC = () => {
     addEventListener("ShareURL", handleShareURL);  
     addEventListener("CopyURL", handleCopyURL); 
     addEventListener("OpenSomething", handleOpenSomething);
+    addEventListener("OpenLink", handleOpenLink);
     return () => {  
       removeEventListener("OnGameIsReady", handleGameIsReady);  
       removeEventListener("ShareURL", handleShareURL);  
       removeEventListener("CopyURL", handleCopyURL);  
       removeEventListener("OpenSomething", handleOpenSomething);
+      removeEventListener("OpenLink", handleOpenLink);
     };  
   }, [addEventListener, removeEventListener, isLoaded]);
 
@@ -270,7 +292,7 @@ export const App: FC = () => {
                 left: 'calc(50% + 100px)',
                 transform: 'translateX(-50%)',
               }}
-              onClick={handleYoutubeClick}
+              onClick={handleYoutubeClick}  
             />
 
             <p  
@@ -284,7 +306,7 @@ export const App: FC = () => {
                 color: 'white',  
               }}  
             >  
-              Version 0.0.5  
+              Version 0.0.6  
             </p>
           </div>
         ) : null}
